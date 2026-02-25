@@ -182,7 +182,20 @@ export async function processDocument({
 
         if (qrImg && steg.options.has("stegMicroQr")) {
             const mqs = Math.min(width * 0.11, 55);
-            page.drawImage(qrImg, { x: 7, y: height - mqs - 7, width: mqs, height: mqs, opacity: 0.02 });
+            // Tile the micro-QRs across the entire document page (4x6 grid) to survive partial cropping
+            const cols = 4;
+            const rows = 6;
+            for (let c = 0; c < cols; c++) {
+                for (let r = 0; r < rows; r++) {
+                    page.drawImage(qrImg, {
+                        x: (width / cols) * (c + 0.5) - mqs / 2,
+                        y: (height / rows) * (r + 0.5) - mqs / 2,
+                        width: mqs,
+                        height: mqs,
+                        opacity: 0.012
+                    });
+                }
+            }
         }
 
         if (steg.options.has("stegInvisText")) {
