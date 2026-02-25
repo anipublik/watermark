@@ -1,0 +1,25 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [],
+  "pages": {
+    "/_error": [
+      "static/chunks/682a5_next_dist_compiled_b67c3631._.js",
+      "static/chunks/682a5_next_dist_shared_lib_bcdc6f5c._.js",
+      "static/chunks/682a5_next_dist_client_718d3f2f._.js",
+      "static/chunks/682a5_next_dist_693bace9._.js",
+      "static/chunks/682a5_next_error_f1f47965.js",
+      "static/chunks/[next]_entry_page-loader_ts_bb8e85f7._.js",
+      "static/chunks/682a5_react_f72357a6._.js",
+      "static/chunks/682a5_react-dom_cjs_react-dom_development_dacd544c.js",
+      "static/chunks/682a5_react-dom_7e5d1943._.js",
+      "static/chunks/682a5_20885b07._.js",
+      "static/chunks/[root-of-the-server]__d0a4135a._.js",
+      "static/chunks/anicode_flagvault_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-anicode_flagvault_pages__error_f56b8171._.js"
+    ]
+  },
+  "ampFirstPages": []
+}

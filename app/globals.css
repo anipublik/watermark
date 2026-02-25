@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode */
+    --background: #FAFAFA;
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --foreground: #1F1F1F;
+    --muted-foreground: #666666;
+    /* Semantic colors (RGB format for Tailwind opacity) */
+    --theme-cyan: 14, 165, 233;
+    /* Tailwind sky-500 (#0ea5e9) for light mode visibility */
+    --theme-red: 239, 68, 68;
+    /* Tailwind red-500 (#ef4444) */
+
+    --color-primary: #374151;
+    --article-surface: #F9FAFB;
+    --article-surface-strong: #F3F4F6;
+    --article-border: #E5E7EB;
+
+    /* Glass card shadows */
+    --shadow-neumorphic: 0 4px 24px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    --shadow-inset: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  }
+
+  html[data-theme="dark"] {
+    /* Cinematic color palette */
+    --obsidian: #000000;
+    --stone: #040306;
+    --ember: #c84b0a;
+    --cyan: #22d3ee;
+
+    /* Neomorphic monochromatic color palette - Dark Mode */
+    --background: var(--obsidian);
+    --card-bg: rgba(10, 8, 14, 0.65);
+    --foreground: #f8fafc;
+    --muted-foreground: #cbd5e1;
+    /* Semantic colors (RGB format for Tailwind opacity) */
+    --theme-cyan: 34, 211, 238;
+    /* Tailwind cyan-400 (#22d3ee) */
+    --theme-red: 248, 113, 113;
+    /* Tailwind red-400 (#f87171) */
+
+    --color-primary: #f8fafc;
+    --article-surface: #2a2d35;
+    --article-surface-strong: #1e2026;
+    --article-border: rgba(255, 255, 255, 0.1);
+
+    /* Neomorphic shadow system - Dark Mode */
+    --shadow-light: -8px -8px 16px #1a1a1a;
+    --shadow-dark: 8px 8px 16px #000000;
+    --shadow-neumorphic: var(--shadow-dark), var(--shadow-light);
+    --shadow-inset-light: inset -4px -4px 8px #1a1a1a;
+    --shadow-inset-dark: inset 4px 4px 8px #000000;
+    --shadow-inset: var(--shadow-inset-dark), var(--shadow-inset-light);
+    --shadow-hover-light: -10px -10px 20px #1a1a1a;
+    --shadow-hover-dark: 10px 10px 20px #000000;
+    --shadow-hover: var(--shadow-hover-dark), var(--shadow-hover-light);
+  }
+
+  html[data-theme="dark"] body {
+    background: var(--obsidian);
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+@keyframes pulse-hex {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0px rgba(var(--theme-cyan), 0.4));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 8px rgba(var(--theme-cyan), 0.5));
+  }
+}
+
+.animate-pulse-hex {
+  animation: pulse-hex 3s ease-in-out infinite;
+}
