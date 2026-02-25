@@ -35,6 +35,25 @@ interface Props {
 }
 
 export function StepOutput({ progress, progressLabel, done, error, auditRecord, outputBytes, onDownloadPdf, onDownloadAudit, onStartOver }: Props) {
+    const handlePrint = () => {
+        if (!outputBytes) return;
+        const blob = new Blob([outputBytes.buffer as ArrayBuffer], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        const iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = url;
+        document.body.appendChild(iframe);
+
+        iframe.onload = () => {
+            iframe.contentWindow?.focus();
+            iframe.contentWindow?.print();
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+                URL.revokeObjectURL(url);
+            }, 1000);
+        };
+    };
+
     return (
         <div className="border border-[var(--article-border)]" style={{ backgroundColor: "var(--card-bg)", boxShadow: "var(--shadow-neumorphic)", backdropFilter: "blur(12px)" }}>
             {!done && !error && (
@@ -97,17 +116,18 @@ export function StepOutput({ progress, progressLabel, done, error, auditRecord, 
                         {auditRecord.redactions !== "none" && auditRecord.redactions.split(", ").map((r) => <Tag key={r} text={`${r} redacted`} v="redact" />)}
                     </div>
 
-                    <div className="flex flex-wrap gap-3 justify-center">
-                        <button onClick={onDownloadPdf} disabled={!outputBytes} className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider bg-theme-cyan text-black hover:bg-theme-cyan hover:scale-[1.02] shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all disabled:opacity-40" style={outputBytes ? { boxShadow: "var(--shadow-neumorphic)" } : {}}>
-                            ⬇ Download protected PDF
-                        </button>
-                        <button onClick={onDownloadAudit} className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider border border-theme-cyan bg-theme-cyan/5 text-theme-cyan hover:bg-theme-cyan hover:text-black hover:scale-[1.02] transition-all" style={{ boxShadow: "var(--shadow-neumorphic)" }}>
-                            📋 Audit report (.json)
-                        </button>
-                        <button onClick={onStartOver} className="px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider border border-[var(--article-border)] text-[var(--foreground)] bg-[var(--article-surface)] hover:border-theme-cyan/50 transition-all" style={{ boxShadow: "var(--shadow-neumorphic)" }}>
-                            Start over
-                        </button>
-                    </div>
+                    <button onClick={onDownloadPdf} disabled={!outputBytes} className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider bg-theme-cyan text-black hover:bg-theme-cyan hover:scale-[1.02] shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all disabled:opacity-40" style={outputBytes ? { boxShadow: "var(--shadow-neumorphic)" } : {}}>
+                        ⬇ Download
+                    </button>
+                    <button onClick={handlePrint} disabled={!outputBytes} className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider bg-theme-cyan text-black hover:bg-theme-cyan hover:scale-[1.02] shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all disabled:opacity-40" style={outputBytes ? { boxShadow: "var(--shadow-neumorphic)" } : {}}>
+                        🖨 Print
+                    </button>
+                    <button onClick={onDownloadAudit} className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider border border-theme-cyan bg-theme-cyan/5 text-theme-cyan hover:bg-theme-cyan hover:text-black hover:scale-[1.02] transition-all" style={{ boxShadow: "var(--shadow-neumorphic)" }}>
+                        📋 Audit report
+                    </button>
+                    <button onClick={onStartOver} className="px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider border border-[var(--article-border)] text-[var(--foreground)] bg-[var(--article-surface)] hover:border-theme-cyan/50 transition-all" style={{ boxShadow: "var(--shadow-neumorphic)" }}>
+                        Start over
+                    </button>
                 </div>
             )}
         </div>
