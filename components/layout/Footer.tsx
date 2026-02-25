@@ -3,8 +3,8 @@ export function Footer() {
         <footer className="border-t border-[var(--article-border)] px-6 sm:px-10 py-5 flex flex-wrap items-center justify-between gap-3 bg-[var(--background)]">
             <p className="font-mono text-xs text-[var(--muted-foreground)]">
                 © {new Date().getFullYear()} Watermark —{" "}
-                <a href="https://anisri.dev" target="_blank" rel="noopener noreferrer" className="text-theme-cyan hover:text-cyan-300 transition-colors">
-                    anisri.dev
+                <a href="https://anisri.dev" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-[var(--muted-foreground)] hover:text-theme-cyan transition-colors">
+                    built with ❤️ by Ani
                 </a>
             </p>
             <p className="font-mono text-xs text-[var(--muted-foreground)]">

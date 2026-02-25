@@ -65,8 +65,6 @@ export function StepWatermark({
         const set = new Set(watermark.styles);
         if (set.has(style)) {
             set.delete(style);
-            // Don't allow 0 styles, fallback to diagonal
-            if (set.size === 0) set.add("diagonal");
         } else {
             if (set.size >= 2) return; // max 2
             set.add(style);
@@ -211,6 +209,10 @@ export function StepWatermark({
                             </button>
                         );
                     })}
+                </div>
+
+                <div className="text-xs text-[var(--muted-foreground)] font-mono text-center mb-6 px-2">
+                    💡 <strong className="text-[var(--foreground)]">Uncheck all boxes</strong> to apply redaction without adding a watermark.
                 </div>
 
                 <p className="font-mono text-xs text-[var(--muted-foreground)] uppercase tracking-wider mb-3">Live preview</p>

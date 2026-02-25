@@ -283,7 +283,7 @@ export async function processDocument({
         organization: organization || "N/A",
         purpose: purpose || "N/A",
         expires: expiry || "N/A",
-        watermark_style: styles.join(" + "),
+        watermark_style: styles.length ? styles.join(" + ") : "none",
         qr_embedded: needsQr && qrImg ? "yes" : "no",
         steg_layers: Array.from(steg.options).join(", ") || "none",
         zerowidth_encoded: zwEncoded ? `yes (${forensicId})` : "no",
