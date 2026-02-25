@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/anipublik/watermark/main/public/favicon.ico" alt="Watermark Logo" width="80" height="80" />
+<img src="https://raw.githubusercontent.com/anipublik/watermark/main/public/logo.svg" alt="Watermark Logo" width="80" height="80" />
 
 # Watermark
 
