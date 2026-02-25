@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/favicon.ico" alt="Watermark Logo" width="80" height="80" />
+<img src="https://raw.githubusercontent.com/anipublik/watermark/main/public/favicon.ico" alt="Watermark Logo" width="80" height="80" />
 
 # Watermark
 
@@ -12,7 +12,8 @@
 
 Watermark is a 100% browser-based forensic tool for securing PDF documents before unauthorized distribution. It burns undeniable cryptographic tracing evidence into documents through multiple visible, invisible, and structural layers.
 
-[Try the Live Demo](#) (Link here)
+[Try the Live Demo](https://watermark.anisri.dev)
+
 
 </div>
 
