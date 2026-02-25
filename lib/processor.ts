@@ -35,7 +35,7 @@ async function generateQrDataUrl(payload: string): Promise<string | null> {
         return await QRCode.toDataURL(payload, {
             width: 128,
             margin: 1,
-            color: { dark: "#000000", light: "#ffffff" },
+            color: { dark: "#000000", light: "#00000000" },
         });
     } catch (e) {
         console.warn("QR generation failed:", e);
@@ -192,7 +192,7 @@ export async function processDocument({
                         y: (height / rows) * (r + 0.5) - mqs / 2,
                         width: mqs,
                         height: mqs,
-                        opacity: 0.012
+                        opacity: 0.04
                     });
                 }
             }

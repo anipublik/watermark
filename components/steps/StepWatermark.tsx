@@ -190,19 +190,23 @@ export function StepWatermark({
                                 onClick={() => toggleStyle(s.value)}
                                 disabled={isDisabled}
                                 className={`flex-[1_1_0%] min-w-[30%] sm:min-w-[70px] p-3 border text-center transition-all relative ${isSelected
-                                        ? "border-theme-cyan bg-theme-cyan/5 shadow-[0_0_15px_rgba(var(--theme-cyan),_0.1)] text-[var(--foreground)]"
-                                        : isDisabled
-                                            ? "border-[var(--article-border)] bg-[var(--article-surface)] text-[var(--muted-foreground)] opacity-40 cursor-not-allowed"
-                                            : s.isNew
-                                                ? "border-dashed border-[var(--article-border)] hover:border-theme-cyan/50 text-[var(--muted-foreground)]"
-                                                : "border-[var(--article-border)] bg-[var(--article-surface)] hover:border-theme-cyan/50 text-[var(--muted-foreground)]"
+                                    ? "border-theme-cyan bg-theme-cyan/5 shadow-[0_0_15px_rgba(var(--theme-cyan),_0.1)] text-[var(--foreground)]"
+                                    : isDisabled
+                                        ? "border-[var(--article-border)] bg-[var(--article-surface)] text-[var(--muted-foreground)] opacity-40 cursor-not-allowed"
+                                        : s.isNew
+                                            ? "border-dashed border-[var(--article-border)] hover:border-theme-cyan/50 text-[var(--muted-foreground)]"
+                                            : "border-[var(--article-border)] bg-[var(--article-surface)] hover:border-theme-cyan/50 text-[var(--muted-foreground)]"
                                     }`}
                                 style={!isSelected && !isDisabled && !s.isNew ? { boxShadow: "var(--shadow-neumorphic)" } : {}}
                             >
+                                <div className={`absolute top-2 left-2 flex items-center justify-center w-3 h-3 border rounded-sm transition-colors text-[8px] font-bold ${isSelected ? "bg-theme-cyan border-theme-cyan text-black" : "border-[var(--muted-foreground)] opacity-30"
+                                    }`}>
+                                    {isSelected && "✓"}
+                                </div>
                                 {s.isNew && (
-                                    <span className="absolute top-1 right-1 bg-theme-cyan text-black text-[8px] font-mono font-bold px-1">NEW</span>
+                                    <span className="absolute top-2 right-2 bg-theme-cyan text-black text-[8px] font-mono font-bold px-1 rounded-sm">NEW</span>
                                 )}
-                                <div className="text-xl mb-1">{s.icon}</div>
+                                <div className="text-xl mb-1 mt-2">{s.icon}</div>
                                 <div className="text-xs font-semibold">{s.label}</div>
                             </button>
                         );
@@ -337,6 +341,6 @@ export function StepWatermark({
                 <button onClick={onBack} className="px-5 py-3 font-mono text-xs font-bold uppercase tracking-wider border border-[var(--article-border)] text-[var(--foreground)] bg-[var(--article-surface)] hover:border-theme-cyan/50 transition-all" style={{ boxShadow: "var(--shadow-neumorphic)" }}>← Back</button>
                 <button onClick={onNext} className="px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider bg-theme-cyan text-black hover:bg-theme-cyan hover:scale-[1.02] shadow-[0_0_20px_rgba(var(--theme-cyan),_0.2)] hover:shadow-[0_0_30px_rgba(var(--theme-cyan),_0.4)] transition-all" style={{ boxShadow: "var(--shadow-neumorphic)" }}>Continue →</button>
             </div>
-        </div>
+        </div >
     );
 }
