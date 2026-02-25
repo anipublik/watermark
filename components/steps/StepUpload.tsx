@@ -51,13 +51,10 @@ export function StepUpload({ file, onFile, onRemove, onNext }: StepUploadProps) 
                     />
                     <div className="text-5xl mb-4">📄</div>
                     <h3 className="text-lg font-bold mb-2 text-[var(--foreground)]">Drop your document here</h3>
-                    <p className="text-[var(--muted-foreground)] text-sm mb-4">
+                    <p className="text-[var(--muted-foreground)] text-sm">
                         PDF, PNG, JPG — processed entirely in your browser.
+                        <br />Nothing leaves your machine.
                     </p>
-                    <div className="text-xs text-[var(--muted-foreground)]/80 text-left max-w-sm mx-auto bg-[var(--background)] p-4 border border-[var(--article-border)]">
-                        <strong className="text-theme-cyan block mb-1 font-mono uppercase tracking-wider">Zero-Trust Architecture</strong>
-                        100% browser-based execution. No servers, no telemetry, no persistent storage, but if you'd rather do it from your dev server, clone the project from Github <a href="https://github.com/anipublik/watermark" target="_blank" rel="noopener noreferrer" className="text-theme-cyan hover:underline">https://github.com/anipublik/watermark</a>
-                    </div>
                 </div>
             )}
 

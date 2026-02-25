@@ -6,7 +6,7 @@ const FEATURES = [
     { title: "Steganographic Metadata", desc: "Inject invisible tracking data into the PDF structure itself, surviving simple visual redactions.", isNew: true },
     { title: "Forensic Tracking ID", desc: "Generate unique cryptographic hashes per recipient for undeniable leak attribution.", isNew: true },
     { title: "PII Redaction", desc: "Automatically scrub sensitive phrases and metadata layers before the document leaves your machine.", isNew: false },
-    { title: "Zero-Trust Architecture", desc: "100% browser-based execution. No servers, no telemetry, no persistent storage.", isNew: false },
+    { title: "Zero-Trust Architecture", desc: "100% browser-based execution. No servers, no telemetry, no persistent storage, but if you'd rather do it from your dev server, clone the project from Github.", link: "https://github.com/anipublik/watermark", isNew: false },
 ];
 
 export default function Home() {
@@ -30,8 +30,8 @@ export default function Home() {
                     {FEATURES.map((f) => (
                         <div
                             key={f.title}
-                            className={`p-5 border transition-all duration-300 ${f.isNew ? "border-theme-cyan/30 bg-theme-cyan/5 hover:border-theme-cyan" : "border-[var(--article-border)] bg-[var(--article-surface)] hover:border-[var(--muted-foreground)]"}`}
-                            style={!f.isNew ? { boxShadow: "var(--shadow-neumorphic)" } : { boxShadow: "0 0 15px rgba(34,211,238,0.05)" }}
+                            className={`p-5 border transition-all duration-300 ${f.isNew ? "border-theme-cyan/30 bg-theme-cyan/5 hover:border-theme-cyan" : "border-[var(--article-border)] bg-transparent hover:border-theme-cyan/50"}`}
+                            style={f.isNew ? { boxShadow: "0 0 15px rgba(34,211,238,0.05)" } : {}}
                         >
                             <div className="flex items-center gap-3 mb-3">
                                 <span className={`w-2 h-2 rounded-full flex-shrink-0 ${f.isNew ? "bg-theme-cyan shadow-[0_0_8px_rgba(34,211,238,0.6)]" : "bg-[var(--muted-foreground)]"}`} />
@@ -40,6 +40,11 @@ export default function Home() {
                             <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">
                                 {f.desc}
                             </p>
+                            {f.link && (
+                                <a href={f.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-3 text-xs font-mono text-theme-cyan hover:underline hover:text-cyan-300 transition-colors">
+                                    Clone on GitHub ↗
+                                </a>
+                            )}
                         </div>
                     ))}
                 </div>
