@@ -10,9 +10,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](https://nextjs.org/)
 
-Watermark is a 100% browser-based forensic tool for securing PDF documents before unauthorized distribution. It burns undeniable cryptographic tracing evidence into documents through multiple visible, invisible, and structural layers.
-
-[Try the Live Demo](https://watermark.anisri.dev)
+Watermark is a 100% browser-based forensic tool for securing PDF documents before unauthorized distribution. It burns undeniable cryptographic tracing evidence into documents through multiple visible, invisible, and structural layers. If you're a savvy tech person, feel free to run this locally or you can [Try it here ](https://docshop.anisri.dev) . Either way, your docs are in your browser and never leave your machine when your watermark/redact stuff.
 
 
 </div>
